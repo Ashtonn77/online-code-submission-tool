@@ -1,0 +1,51 @@
+﻿@page "/ide"
+@inject IJSRuntime JsRuntime
+
+
+<div class="header">Online IDE</div>
+<div class="control-panel">
+    
+    Select Language:
+    &nbsp; &nbsp;
+    <select id="languages" class="language" @onchange="changeLanguage">
+
+        <option value="python">Python</option>
+        <option value="cpp">C++</option>
+        <option value="csharp">C#</option>
+        <option value="java">Java</option>
+        <option value="sql">SQL</option>
+
+    </select>
+
+</div>
+
+<div class="editor" id="editor"></div>
+
+<div class="button-container">
+    
+    <button class="btn" onclick="executeCode()">Run</button>
+
+</div>
+<div class="output"></div>
+
+
+@code {
+
+
+    private async Task changeLanguage(ChangeEventArgs e)
+    {
+
+        await JsRuntime.InvokeVoidAsync("changeLanguage");
+
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JsRuntime.InvokeVoidAsync("showEditor");
+        }
+
+    }
+
+}
