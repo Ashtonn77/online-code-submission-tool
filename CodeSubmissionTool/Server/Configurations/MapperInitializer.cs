@@ -13,6 +13,8 @@ namespace CodeSubmissionTool.Server.Configurations
         public MapperInitializer()
         {
             CreateMap<Test, TestDto>().ReverseMap();
+            CreateMap<Submission, SubmissionDto>().ReverseMap();
+            CreateMap<Question, QuestionDto>().ReverseMap();
         }
 
     }
