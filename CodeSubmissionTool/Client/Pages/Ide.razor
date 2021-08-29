@@ -5,44 +5,146 @@
 @inject NavigationManager NavigationManager
 
 
+<style>
+
+    .ide-container {
+        width: 100%;
+        height: 90%;
+        max-height: 900px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #134b5f;
+        padding: 15px;
+        font-family: monospace;
+        border-radius: 5px;
+    }
+
+
+    .ide-wrapper {
+        height: 100%;
+        width: 60%;
+        padding: 10px;
+    }
+
+    .output-container {
+        height: 100%;
+        width: 40%;
+        padding: 10px;
+    }
+
+    .ide {
+        width: 100%;
+        height: 65%;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .button-container {
+        width: 100%;
+        height: 5%;
+        padding: 5px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .question-container {
+        width: 100%;
+        height: 30%;
+        padding: 5px;
+    }
+
+    .output, .question {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: justify;
+    }
+
+    .control-panel {
+        width: 100%;
+        height: 10%;
+        background: #2187ab;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    .editor {
+        width: 100%;
+        height: 90%;
+        border-radius: 5px;
+    }
+    
+
+</style>
+
+
+<h1>Nebula - Online Code Submission Tool</h1>
+
 <div class="ide-container">
-    
+
     <div class="ide-wrapper">
-    
-        <div class="header">Online IDE</div>
-        <div class="control-panel">
-    
-            Select Language:
-            &nbsp; &nbsp;
-            <select id="languages" class="language" @onchange="changeLanguage">
 
-                <option value="python">Python</option>
-                <option value="cpp">C++</option>
-                <option value="csharp">C#</option>
-                <option value="java">Java</option>
-                <option value="sql">SQL</option>
-                <option value="javascript">JavaScript</option>
+        <div class="ide">
+            <div class="control-panel">
 
-            </select>
+                <div class="language">
+                    Select Language:
+                    &nbsp;
+                    <select id="languages" class="language" @onchange="changeLanguage">
 
+                        <option value="python">Python</option>
+                        <option value="cpp">C++</option>
+                        <option value="csharp">C#</option>
+                        <option value="java">Java</option>
+                        <option value="sql">SQL</option>
+                        <option value="javascript">JavaScript</option>
+
+                    </select>
+                </div>
+
+                <span>&nbsp; Timer: 00:00:00</span>
+
+            </div>
+
+            <div class="editor" id="editor">
+               
+            </div>
         </div>
-
-        <div class="editor" id="editor"></div>
 
         <div class="button-container">
-    
-            <button class="btn" @onclick="executeCode">Run</button>
+
+            <button class="btn btn-primary btn-sm" @onclick="executeCode">Run</button>
 
         </div>
-        <div class="output"></div>
-    
+
+        <div class="question-container">
+            <div class="question">
+                
+                @if (question != null)
+                {
+                    @question.Description;
+                }
+
+            </div>
+        </div>
 
     </div>
-    
-    
-    @*import sys
 
-    sentence = sys.argv[1]*@
+    <div class="output-container">
+        <div class="output"></div>
+    </div>
+
 
 </div>
 
@@ -50,6 +152,7 @@
 @code {
 
     Test test = new Test();
+    Question question;
 
     private async Task changeLanguage(ChangeEventArgs e)
     {
@@ -77,6 +180,13 @@
 
     }
 
+
+    protected async override Task OnInitializedAsync()
+    {
+        IList<Question> questions = await HttpClient.GetFromJsonAsync<IList<Question>>("api/questions");
+        int idx = new Random().Next(0, questions.Count);
+        question = questions[idx];
+    }
 
 
 }

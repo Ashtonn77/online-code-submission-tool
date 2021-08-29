@@ -1,18 +1,23 @@
 import sys
 
-s = sys.argv[1]
+n = sys.argv[1]
 
-def isValid(s) -> bool:
-    stack=[]
-    comb={'(':')','{':'}','[':']'}
-    for brkt in s:
-        if brkt in comb.keys():
-            stack.append(brkt)
-        else:
-            if len(stack)>0 and comb[stack[-1]]==brkt:
-                stack.pop()
-            else:
-                return False
-    return len(stack)==0
+def fizzBuzz(n):
+    x = int(n)
+    
+    res = ""
+    
+    for i in range(1, x + 1):
         
-print(isValid(s))
+        if i % 3 == 0 and i % 5 == 0:
+            res += "FizzBuzz"
+        elif i % 3 == 0:
+            res += "Fizz"
+        elif i % 5 == 0:
+            res += "Buzz"
+        else:
+            res += str(i)
+            
+    return res
+    
+print(fizzBuzz(n))    

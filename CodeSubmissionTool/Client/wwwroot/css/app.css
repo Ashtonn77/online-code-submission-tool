@@ -51,20 +51,21 @@ a, .btn-link {
 
 
 /*IDE*/
-/*
-.ide-container {
-  
-}
-*/
 
-.ide-wrapper {
-    width: 80%;
-    height: 100%;
-    max-width: 800px;
-    margin: auto;
-}
 
-.header {
+/*@media screen and (max-width: 1160px) {
+
+    .control-panel {
+        flex-direction: column;
+        height: 20%;
+        padding: 30px;
+    }
+
+ 
+
+}*/
+
+/*.header {
     background: #57a958;
     text-align: left;
     font-size: 20px;
@@ -84,13 +85,13 @@ a, .btn-link {
 .languages {
     background: white;
     border: 1px solid gray;
-}
+}*/
 
-#editor {
+/*#editor {
     height: 400px;
-}
+}*/
 
-.button-container {
+/*.button-container {
     text-align: right;
     padding: 4px;
 }
@@ -108,5 +109,5 @@ a, .btn-link {
     min-height: 100px;
     width: 99%;
     resize: none;
-}
+}*/
 

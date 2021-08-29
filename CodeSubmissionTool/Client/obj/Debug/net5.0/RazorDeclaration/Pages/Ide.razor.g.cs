@@ -98,10 +98,11 @@ using CodeSubmissionTool.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\Pages\Ide.razor"
+#line 152 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\Pages\Ide.razor"
        
 
     Test test = new Test();
+    Question question;
 
     private async Task changeLanguage(ChangeEventArgs e)
     {
@@ -129,6 +130,13 @@ using CodeSubmissionTool.Shared;
 
     }
 
+
+    protected async override Task OnInitializedAsync()
+    {
+        IList<Question> questions = await HttpClient.GetFromJsonAsync<IList<Question>>("api/questions");
+        int idx = new Random().Next(0, questions.Count);
+        question = questions[idx];
+    }
 
 
 

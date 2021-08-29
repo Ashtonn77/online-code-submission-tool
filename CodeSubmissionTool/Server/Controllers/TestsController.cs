@@ -25,6 +25,7 @@ namespace CodeSubmissionTool.Server.Controllers
         private readonly ICompilerOfWork _compiler;
         private readonly string fileName = $"{Environment.CurrentDirectory}\\sample.py";
 
+
         public TestsController(IUnitOfWork unitOfWork, IMapper mapper, ICompilerOfWork compiler)
         {
             _unitOfWork = unitOfWork;
@@ -97,9 +98,9 @@ namespace CodeSubmissionTool.Server.Controllers
                 await _unitOfWork.Save();
 
                 _compiler.Python.CreateFile(testDto.Code, fileName);
-                var executionOutput = _compiler.Python.ExecuteScript(fileName, "([)]");
+                var executionOutput = _compiler.Python.ExecuteScript(fileName, "15");
 
-                bool executionResult = executionOutput.Trim().Equals("False"); 
+                bool executionResult = executionOutput.Trim().Equals("12Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz"); 
 
                 Submission submission = new Submission
                 {
