@@ -98,7 +98,7 @@ using CodeSubmissionTool.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 46 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\Pages\Ide.razor"
+#line 50 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\Pages\Ide.razor"
        
 
     Test test = new Test();

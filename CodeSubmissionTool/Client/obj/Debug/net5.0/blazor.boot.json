@@ -220,11 +220,11 @@
       "netstandard.dll": "sha256-yOOty6BTX3e57YAEHK5a4nku\/lj0vi7jg\/eQZAjbDQk=",
       "System.Private.CoreLib.dll": "sha256-rraBQp6NevIQiELPVfDFDl5pv9QVJqCiZhB5bkpiZ88=",
       "CodeSubmissionTool.Shared.dll": "sha256-Yttd4urBaYHz8KETBD4Fgo+yyuI\/nqp0PivuG6RrIBM=",
-      "CodeSubmissionTool.Client.dll": "sha256-epSKvry10DIKuMISJncWyNw2Nx7WaeCz4sAM6n\/6puY="
+      "CodeSubmissionTool.Client.dll": "sha256-lIz6U2soItKF5gG1uJ4FePmlc4zRmLUNAOuN8\/ZxDGM="
     },
     "lazyAssembly": null,
     "pdb": {
-      "CodeSubmissionTool.Client.pdb": "sha256-LAeYduYe9ilm852YOvNdUqn3oNFvq2xD3gPjCu3EakA="
+      "CodeSubmissionTool.Client.pdb": "sha256-5p9Ygtzav4cuxpd1raulCZlhLSYkBZaV5OD2OM4S2Y4="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-L2vkcKzmXJtf+J7db5TbDMBckrgqJ5qc0ZzVIdRlm0I=",

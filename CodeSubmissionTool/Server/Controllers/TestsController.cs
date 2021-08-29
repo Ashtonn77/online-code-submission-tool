@@ -97,8 +97,9 @@ namespace CodeSubmissionTool.Server.Controllers
                 await _unitOfWork.Save();
 
                 _compiler.Python.CreateFile(testDto.Code, fileName);
-                var executionOutput = _compiler.Python.ExecuteScript(fileName, "Nebula");
-                bool executionResult = executionOutput.Trim().Equals("alubeN");
+                var executionOutput = _compiler.Python.ExecuteScript(fileName, "([)]");
+
+                bool executionResult = executionOutput.Trim().Equals("False"); 
 
                 Submission submission = new Submission
                 {
