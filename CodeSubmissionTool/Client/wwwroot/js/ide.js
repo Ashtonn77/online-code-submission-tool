@@ -31,3 +31,12 @@ function changeLanguage() {
     }
 
 }
+
+
+function getCode() {
+
+    var code = editor.getSession().getValue();
+
+    return code;
+
+}

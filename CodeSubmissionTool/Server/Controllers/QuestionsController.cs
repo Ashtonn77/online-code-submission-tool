@@ -71,7 +71,7 @@ namespace CodeSubmissionTool.Server.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateCountry([FromBody] QuestionDto questionDto)
+        public async Task<IActionResult> CreateQuestion([FromBody] QuestionDto questionDto)
         {
 
             if (!ModelState.IsValid)

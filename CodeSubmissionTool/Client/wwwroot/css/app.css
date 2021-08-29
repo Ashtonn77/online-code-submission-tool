@@ -51,6 +51,19 @@ a, .btn-link {
 
 
 /*IDE*/
+/*
+.ide-container {
+  
+}
+*/
+
+.ide-wrapper {
+    width: 80%;
+    height: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
 .header {
     background: #57a958;
     text-align: left;
@@ -96,3 +109,4 @@ a, .btn-link {
     width: 99%;
     resize: none;
 }
+

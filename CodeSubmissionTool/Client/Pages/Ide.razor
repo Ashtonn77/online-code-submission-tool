@@ -1,36 +1,51 @@
 ﻿@page "/ide"
+@using CodeSubmissionTool.Shared
 @inject IJSRuntime JsRuntime
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
 
 
-<div class="header">Online IDE</div>
-<div class="control-panel">
+<div class="ide-container">
     
-    Select Language:
-    &nbsp; &nbsp;
-    <select id="languages" class="language" @onchange="changeLanguage">
+    <div class="ide-wrapper">
+    
+        <div class="header">Online IDE</div>
+        <div class="control-panel">
+    
+            Select Language:
+            &nbsp; &nbsp;
+            <select id="languages" class="language" @onchange="changeLanguage">
 
-        <option value="python">Python</option>
-        <option value="cpp">C++</option>
-        <option value="csharp">C#</option>
-        <option value="java">Java</option>
-        <option value="sql">SQL</option>
+                <option value="python">Python</option>
+                <option value="cpp">C++</option>
+                <option value="csharp">C#</option>
+                <option value="java">Java</option>
+                <option value="sql">SQL</option>
+                <option value="javascript">JavaScript</option>
 
-    </select>
+            </select>
+
+        </div>
+
+        <div class="editor" id="editor"></div>
+
+        <div class="button-container">
+    
+            <button class="btn" @onclick="executeCode">Run</button>
+
+        </div>
+        <div class="output"></div>
+    
+
+    </div>
+    
 
 </div>
-
-<div class="editor" id="editor"></div>
-
-<div class="button-container">
-    
-    <button class="btn" onclick="executeCode()">Run</button>
-
-</div>
-<div class="output"></div>
 
 
 @code {
 
+    Test test = new Test();
 
     private async Task changeLanguage(ChangeEventArgs e)
     {
@@ -47,5 +62,17 @@
         }
 
     }
+
+
+    private async Task executeCode()
+    {
+        test.Code = await JsRuntime.InvokeAsync<string>("getCode");
+        test.Language = "Python3.0";
+        await HttpClient.PostAsJsonAsync("api/tests", test);
+        NavigationManager.NavigateTo("/result");
+
+    }
+
+
 
 }

@@ -82,6 +82,13 @@ using CodeSubmissionTool.Client.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\Pages\Ide.razor"
+using CodeSubmissionTool.Shared;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/ide")]
     public partial class Ide : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -91,9 +98,10 @@ using CodeSubmissionTool.Client.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 32 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\Pages\Ide.razor"
+#line 46 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\Pages\Ide.razor"
        
 
+    Test test = new Test();
 
     private async Task changeLanguage(ChangeEventArgs e)
     {
@@ -112,9 +120,23 @@ using CodeSubmissionTool.Client.Shared;
     }
 
 
+    private async Task executeCode()
+    {
+        test.Code = await JsRuntime.InvokeAsync<string>("getCode");
+        test.Language = "Python3.0";
+        await HttpClient.PostAsJsonAsync("api/tests", test);
+        NavigationManager.NavigateTo("/result");
+
+    }
+
+
+
+
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient HttpClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
     }
 }

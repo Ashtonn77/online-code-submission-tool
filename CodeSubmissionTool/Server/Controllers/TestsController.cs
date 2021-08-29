@@ -5,6 +5,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
+using CodeSubmissionTool.Server.Compilers;
+using CodeSubmissionTool.Server.ICompilers;
 using CodeSubmissionTool.Server.IRepositories;
 using CodeSubmissionTool.Server.Models;
 using CodeSubmissionTool.Shared;
@@ -20,11 +22,14 @@ namespace CodeSubmissionTool.Server.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ICompilerOfWork _compiler;
+        private readonly string fileName = $"{Environment.CurrentDirectory}\\sample.py";
 
-        public TestsController(IUnitOfWork unitOfWork, IMapper mapper)
+        public TestsController(IUnitOfWork unitOfWork, IMapper mapper, ICompilerOfWork compiler)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _compiler = compiler;
         }
 
         // GET: api/<TestsController>
@@ -72,7 +77,7 @@ namespace CodeSubmissionTool.Server.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateCountry([FromBody] TestDto testDto)
+        public async Task<IActionResult> CreateTest([FromBody] TestDto testDto)
         {
 
             if (!ModelState.IsValid)
@@ -85,9 +90,24 @@ namespace CodeSubmissionTool.Server.Controllers
             try
             {
 
+               
 
                 var test = _mapper.Map<Test>(testDto);
                 await _unitOfWork.Tests.Insert(test);
+                await _unitOfWork.Save();
+
+                _compiler.Python.CreateFile(testDto.Code, fileName);
+                var executionOutput = _compiler.Python.ExecuteScript(fileName, "Nebula");
+                bool executionResult = executionOutput.Trim().Equals("alubeN");
+
+                Submission submission = new Submission
+                {
+                    Id = 1,
+                    Output = executionOutput,
+                    Result = executionResult
+                };
+
+                _unitOfWork.Submissions.Update(submission);
                 await _unitOfWork.Save();
 
                 return CreatedAtAction("GetTest", new { id = test.Id }, test);

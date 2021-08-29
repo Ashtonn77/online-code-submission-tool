@@ -1,0 +1,50 @@
+﻿@page "/result"
+@using CodeSubmissionTool.Shared
+@using System.Security.Cryptography
+@inject HttpClient HttpClient
+
+@if (submission == null)
+{
+<h3 class="mt-5">Loading results ...</h3>
+}
+else
+{
+    <h3 class="mt-5">Code Submitted</h3>
+
+
+    <table class="table table-dark mt-5">
+    
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Output</th>
+                <th scope="col">Result</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            @if (submission != null)
+            {
+                <td>@submission.Output</td>
+                <td>@submission.Result</td>
+            }
+        
+        </tr>
+        </tbody>
+
+    </table>
+
+}
+
+@code {
+
+    Submission submission;
+
+    protected async override Task OnInitializedAsync()
+    {
+        submission = await HttpClient.GetFromJsonAsync<Submission>("api/submissions/1");
+    }
+
+}

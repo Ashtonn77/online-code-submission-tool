@@ -6,8 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using CodeSubmissionTool.Server.Compilers;
 using CodeSubmissionTool.Server.Configurations;
 using CodeSubmissionTool.Server.Data;
+using CodeSubmissionTool.Server.ICompilers;
 using CodeSubmissionTool.Server.IRepositories;
 using CodeSubmissionTool.Server.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +41,7 @@ namespace CodeSubmissionTool.Server
             services.AddAutoMapper(typeof(MapperInitializer));
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<ICompilerOfWork, CompilerOfWork>();
             services.AddControllers().AddNewtonsoftJson(op => op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
         }
