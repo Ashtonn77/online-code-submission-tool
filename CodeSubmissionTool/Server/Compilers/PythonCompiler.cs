@@ -24,8 +24,9 @@ namespace CodeSubmissionTool.Server.Compilers
         {
             //1. create process info
             var psi = new ProcessStartInfo();
-            psi.FileName = @"C:\Python\Python390\python.exe";
-            
+            //psi.FileName = @"C:\Python\Python390\python.exe";
+            psi.FileName = @"C:\Python39\python.exe";
+
             //2. provide script and arguments
             var script = fileName;
             psi.Arguments = $"\"{script}\" \"{a}\"";

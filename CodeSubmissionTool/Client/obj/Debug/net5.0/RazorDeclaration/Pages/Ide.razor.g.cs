@@ -13,77 +13,77 @@ namespace CodeSubmissionTool.Client.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 1 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 2 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 3 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 4 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 5 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 6 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 7 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 8 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 9 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using CodeSubmissionTool.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\_Imports.razor"
+#line 10 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\_Imports.razor"
 using CodeSubmissionTool.Client.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\Pages\Ide.razor"
+#line 2 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\Pages\Ide.razor"
 using CodeSubmissionTool.Shared;
 
 #line default
@@ -98,7 +98,7 @@ using CodeSubmissionTool.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 152 "C:\Users\ashto\Documents\LanguangeSpecific\dotnet\ASP.NET\blazor\CodeSubmissionTool\CodeSubmissionTool\Client\Pages\Ide.razor"
+#line 152 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\Pages\Ide.razor"
        
 
     Test test = new Test();
@@ -124,6 +124,8 @@ using CodeSubmissionTool.Shared;
     private async Task executeCode()
     {
         test.Code = await JsRuntime.InvokeAsync<string>("getCode");
+
+        //change hard coded language value
         test.Language = "Python3.0";
         await HttpClient.PostAsJsonAsync("api/tests", test);
         NavigationManager.NavigateTo("/result");

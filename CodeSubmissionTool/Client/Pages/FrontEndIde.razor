@@ -1,0 +1,85 @@
+﻿@page "/frontendide"
+@inject IJSRuntime jsRuntime
+
+
+<style>
+
+    .front-wrapper {
+        height: 90%;
+        max-height: 900px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .code-area {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        border-right: 1px solid #555;
+        height: 100%;
+    }
+
+        .code-area textarea {
+            resize: none;
+            outline: none;
+            width: 100%;
+            height: 33.33%;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+    .preview-area {
+        width: 50%;
+        height: 100%;
+    }
+
+        .preview-area iframe {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #555;
+            background: #fff;
+        }
+</style>
+
+<h1>Nebula - CodePen Clone</h1>
+
+<div class="front-wrapper">
+
+    
+
+    <div class="code-area">
+
+        <textarea id="htmlCode" placeholder="HTML Code" @oninput="showPreview"></textarea>
+
+        <textarea id="cssCode" placeholder="CSS Code" @oninput="showPreview"></textarea>
+
+        <textarea id="jsCode" placeholder="JavaScript Code" @oninput="showPreview"></textarea>
+
+    </div>
+
+    <div class="preview-area">
+
+        <iframe id="preview-window"></iframe>
+
+    </div>
+
+
+</div>
+
+
+@code {
+
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await jsRuntime.InvokeVoidAsync("start");
+    }
+
+    private async Task showPreview()
+    {
+        await jsRuntime.InvokeVoidAsync("changeFrame");
+    }
+
+}

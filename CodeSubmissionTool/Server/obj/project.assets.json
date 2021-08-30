@@ -6210,20 +6210,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ashto\\.nuget\\packages\\": {}
+    "C:\\Users\\Ashton\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Server\\CodeSubmissionTool.Server.csproj",
+      "projectUniqueName": "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Server\\CodeSubmissionTool.Server.csproj",
       "projectName": "CodeSubmissionTool.Server",
-      "projectPath": "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Server\\CodeSubmissionTool.Server.csproj",
-      "packagesPath": "C:\\Users\\ashto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Server\\obj\\",
+      "projectPath": "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Server\\CodeSubmissionTool.Server.csproj",
+      "packagesPath": "C:\\Users\\Ashton\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Server\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ashto\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Ashton\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6236,11 +6241,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Client\\CodeSubmissionTool.Client.csproj": {
-              "projectPath": "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Client\\CodeSubmissionTool.Client.csproj"
+            "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Client\\CodeSubmissionTool.Client.csproj": {
+              "projectPath": "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Client\\CodeSubmissionTool.Client.csproj"
             },
-            "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj": {
-              "projectPath": "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj"
+            "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj": {
+              "projectPath": "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj"
             }
           }
         }

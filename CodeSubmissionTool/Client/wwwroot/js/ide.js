@@ -1,5 +1,31 @@
 ﻿let editor;
 
+var htmlCode;
+var cssCode;
+var jsCode;
+
+var frame;
+
+
+function start() {
+
+    htmlCode = document.getElementById("htmlCode").value;
+    cssCode = "<style>" + document.getElementById("cssCode").value + "</style>";
+    jsCode = "<scri" + "pt>" + document.getElementById("jsCode").value + "</scri" + "pt>";
+
+    frame = document.getElementById("preview-window").contentWindow.document;
+
+}
+
+function changeFrame() {
+
+
+    frame.open();
+    frame.write(htmlCode + cssCode + jsCode);
+    frame.close();
+
+}
+
 
 function showEditor() {
 
@@ -8,7 +34,6 @@ function showEditor() {
     editor.session.setMode("ace/mode/python");
 
 }
-
 
 function changeLanguage() {
 

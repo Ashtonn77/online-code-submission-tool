@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj": {}
+    "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj": {
+    "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj",
         "projectName": "CodeSubmissionTool.Shared",
-        "projectPath": "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj",
-        "packagesPath": "C:\\Users\\ashto\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ashto\\Documents\\LanguangeSpecific\\dotnet\\ASP.NET\\blazor\\CodeSubmissionTool\\CodeSubmissionTool\\Shared\\obj\\",
+        "projectPath": "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Shared\\CodeSubmissionTool.Shared.csproj",
+        "packagesPath": "C:\\Users\\Ashton\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ashton\\OneDrive - Nebula\\course-work\\online-code-submission-tool\\CodeSubmissionTool\\Shared\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ashto\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Ashton\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
