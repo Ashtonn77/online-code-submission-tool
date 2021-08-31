@@ -19,6 +19,6 @@ We expose a back-end API that our Blazor front-end consumes
 ### Currently available languages:
 1. Python
 2. SQL
-3. *Html/Css/*JavaScript (we keep an open mind by including html and css)
+3. Html/Css/JavaScript
   
   
