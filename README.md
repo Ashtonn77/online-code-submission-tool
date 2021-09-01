@@ -6,7 +6,7 @@
   - Test your front-end skills with a CodePen clone
 
 ### Technologies used:
-1. ASP.NET
+1. C# - ASP.NET
 2. Blazor
 3. SQL Server
 4. Html
