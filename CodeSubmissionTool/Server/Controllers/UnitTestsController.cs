@@ -1,49 +1,40 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using AutoMapper;
-using CodeSubmissionTool.Server.Compilers;
-using CodeSubmissionTool.Server.ICompilers;
+﻿using AutoMapper;
 using CodeSubmissionTool.Server.IRepositories;
 using CodeSubmissionTool.Server.Models;
 using CodeSubmissionTool.Shared;
 using Microsoft.AspNetCore.Http;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace CodeSubmissionTool.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestsController : ControllerBase
+    public class UnitTestsController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly ICompilerOfWork _compiler;
-        private readonly string fileName = $"{Environment.CurrentDirectory}\\sample.py";
 
-
-        public TestsController(IUnitOfWork unitOfWork, IMapper mapper, ICompilerOfWork compiler)
+        public UnitTestsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _compiler = compiler;
         }
 
-        // GET: api/<TestsController>
+        // GET: api/<UnitTestsController>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetTests()
+        public async Task<IActionResult> GetUnitTests()
         {
             try
             {
-                //Expression<Func<Test, bool>> expression = null
-                var tests = await _unitOfWork.Tests.GetAll();
-                var results = _mapper.Map<IList<TestDto>>(tests);
+                //Expression<Func<UnitTest, bool>> expression = null
+                var unitTests = await _unitOfWork.UnitTests.GetAll();
+                var results = _mapper.Map<IList<UnitTestDto>>(unitTests);
                 return Ok(results);
 
             }
@@ -55,16 +46,16 @@ namespace CodeSubmissionTool.Server.Controllers
 
 
 
-        // GET api/<TestsController>/5
+        // GET api/<UnitTestsController>/5
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetTest(int id)
+        public async Task<IActionResult> GetUnitTest(int id)
         {
             try
             {
-                var test = await _unitOfWork.Tests.Get(q => q.Id == id);
-                var result = _mapper.Map<TestDto>(test);
+                var unitTest = await _unitOfWork.UnitTests.Get(q => q.Id == id);
+                var result = _mapper.Map<UnitTestDto>(unitTest);
                 return Ok(result);
             }
             catch (Exception e)
@@ -73,50 +64,52 @@ namespace CodeSubmissionTool.Server.Controllers
             }
         }
 
-        // POST api/<TestsController>
+
+        [HttpGet("challenge/{id}")]
+        public async Task<IActionResult> GetUnitTestsByChallenge(int id)
+        {
+            
+            var unitTests = await _unitOfWork.UnitTests.GetAll(q => q.ChallengeId == id);
+            var results = _mapper.Map<IList<UnitTestDto>>(unitTests);
+            
+            if (results == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(results);
+        }
+
+
+        // POST api/<UnitTestsController>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateTest([FromBody] TestDto testDto)
+        public async Task<IActionResult> CreateUnitTest([FromBody] UnitTestDto unitTestDto)
         {
 
             if (!ModelState.IsValid)
             {
-               
+
                 return BadRequest(ModelState);
             }
 
 
             try
             {
-               
 
-                var test = _mapper.Map<Test>(testDto);
-                await _unitOfWork.Tests.Insert(test);
+
+                var unitTest = _mapper.Map<UnitTest>(unitTestDto);
+                await _unitOfWork.UnitTests.Insert(unitTest);
                 await _unitOfWork.Save();
 
-                _compiler.Python.CreateFile(testDto.Code, fileName);
-                var executionOutput = _compiler.Python.ExecuteScript(fileName, "15");
-
-                bool executionResult = executionOutput.Trim().Equals("12Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz"); 
-
-                Submission submission = new Submission
-                {
-                    Id = 1,
-                    Output = executionOutput,
-                    Result = executionResult
-                };
-
-                _unitOfWork.Submissions.Update(submission);
-                await _unitOfWork.Save();
-
-                return CreatedAtAction("GetTest", new { id = test.Id }, test);
+                return CreatedAtAction("GetUnitTest", new { id = unitTest.Id }, unitTest);
 
             }
             catch (Exception e)
             {
-                
+
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     e.InnerException);
             }
@@ -124,10 +117,10 @@ namespace CodeSubmissionTool.Server.Controllers
 
         }
 
-     
-        // PUT api/<TestsController>/5
+
+        // PUT api/<UnitTestsController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTest(int id, [FromBody] TestDto testDto)
+        public async Task<IActionResult> UpdateUnitTest(int id, [FromBody] UnitTestDto unitTestDto)
         {
             if (!ModelState.IsValid)
             {
@@ -136,15 +129,15 @@ namespace CodeSubmissionTool.Server.Controllers
 
             try
             {
-                var originalTest = await _unitOfWork.Tests.Get(q => q.Id == id);
+                var originalUnitTest = await _unitOfWork.UnitTests.Get(q => q.Id == id);
 
-                if (originalTest == null)
+                if (originalUnitTest == null)
                 {
                     return BadRequest("Submitted data is invalid");
                 }
 
-                _mapper.Map(testDto, originalTest);
-                _unitOfWork.Tests.Update(originalTest);
+                _mapper.Map(unitTestDto, originalUnitTest);
+                _unitOfWork.UnitTests.Update(originalUnitTest);
                 await _unitOfWork.Save();
 
                 return NoContent();
@@ -158,12 +151,12 @@ namespace CodeSubmissionTool.Server.Controllers
         }
 
 
-        // DELETE api/<TestsController>/5
+        // DELETE api/<UnitTestsController>/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> DeleteTest(int id)
+        public async Task<IActionResult> DeleteUnitTest(int id)
         {
             if (id < 1)
             {
@@ -172,14 +165,14 @@ namespace CodeSubmissionTool.Server.Controllers
 
             try
             {
-                var test = await _unitOfWork.Tests.Get(q => q.Id == id);
+                var unitTest = await _unitOfWork.UnitTests.Get(q => q.Id == id);
 
-                if (test == null)
+                if (unitTest == null)
                 {
                     return BadRequest("Submitted data is invalid");
                 }
 
-                await _unitOfWork.Tests.Delete(id);
+                await _unitOfWork.UnitTests.Delete(id);
                 await _unitOfWork.Save();
 
                 return NoContent();
@@ -192,6 +185,5 @@ namespace CodeSubmissionTool.Server.Controllers
             }
 
         }
-
     }
 }

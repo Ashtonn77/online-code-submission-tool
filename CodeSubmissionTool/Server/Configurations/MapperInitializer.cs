@@ -15,6 +15,8 @@ namespace CodeSubmissionTool.Server.Configurations
             CreateMap<Test, TestDto>().ReverseMap();
             CreateMap<Submission, SubmissionDto>().ReverseMap();
             CreateMap<Question, QuestionDto>().ReverseMap();
+            CreateMap<Challenge, ChallengeDto>().ReverseMap();
+            CreateMap<UnitTest, UnitTestDto>().ReverseMap();
         }
 
     }

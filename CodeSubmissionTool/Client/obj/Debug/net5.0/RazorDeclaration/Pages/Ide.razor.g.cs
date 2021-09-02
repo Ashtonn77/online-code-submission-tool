@@ -127,6 +127,7 @@ using CodeSubmissionTool.Shared;
 
         //change hard coded language value
         test.Language = "Python3.0";
+
         await HttpClient.PostAsJsonAsync("api/tests", test);
         NavigationManager.NavigateTo("/result");
 

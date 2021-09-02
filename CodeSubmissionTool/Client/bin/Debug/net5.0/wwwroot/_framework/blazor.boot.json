@@ -219,13 +219,13 @@
       "mscorlib.dll": "sha256-9AZ7YsJz\/p2gr4E0EQXdHBqwDxoXqtzxhqC6aRsa2K8=",
       "netstandard.dll": "sha256-yOOty6BTX3e57YAEHK5a4nku\/lj0vi7jg\/eQZAjbDQk=",
       "System.Private.CoreLib.dll": "sha256-rraBQp6NevIQiELPVfDFDl5pv9QVJqCiZhB5bkpiZ88=",
-      "CodeSubmissionTool.Shared.dll": "sha256-rdXElNntkeKyTmlSgiMFg94v7BIknrkM+2MXt+2NXfQ=",
-      "CodeSubmissionTool.Client.dll": "sha256-YEjbli7UFaOKt57fPT8Ss7tB45AKznhhiCu+CytfMUU="
+      "CodeSubmissionTool.Shared.dll": "sha256-lIa+ge3WiVZ3nL5cGB4BhSvfCSfzBBtGRhUUkyu+bZc=",
+      "CodeSubmissionTool.Client.dll": "sha256-vJ5MHrtajt2dtTQO5IujElbaeGdos2fZ80e3opNw1t8="
     },
     "lazyAssembly": null,
     "pdb": {
-      "CodeSubmissionTool.Shared.pdb": "sha256-9hpG76\/1XSJsnJpdPKTybNxQJqvFIAI6v7m5KW+meP4=",
-      "CodeSubmissionTool.Client.pdb": "sha256-C9xHAsA5tE5QsmzhLCaS16flSlCaKI7eRhBIaH\/cv2I="
+      "CodeSubmissionTool.Shared.pdb": "sha256-PhTcNHHy5IOQBX8xKeRw5c9L5RLl0ZSO+qy07D4U0VQ=",
+      "CodeSubmissionTool.Client.pdb": "sha256-TtGnPAyaW8OH4tAaSO9rR7qkqN2mqr9hSa7Ss5GjWDE="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-L2vkcKzmXJtf+J7db5TbDMBckrgqJ5qc0ZzVIdRlm0I=",

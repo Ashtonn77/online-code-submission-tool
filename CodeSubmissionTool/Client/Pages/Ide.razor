@@ -62,7 +62,7 @@
         height: 100%;
         background: #fff;
         border-radius: 5px;
-        padding: 20px;
+        padding: 10px;
         text-align: justify;
     }
 
@@ -177,6 +177,7 @@
 
         //change hard coded language value
         test.Language = "Python3.0";
+
         await HttpClient.PostAsJsonAsync("api/tests", test);
         NavigationManager.NavigateTo("/result");
 

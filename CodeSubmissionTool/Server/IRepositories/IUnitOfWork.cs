@@ -14,6 +14,10 @@ namespace CodeSubmissionTool.Server.IRepositories
 
         IGenericRepository<Question> Questions { get; }
 
+        IGenericRepository<Challenge> Challenges { get; }
+
+        IGenericRepository<UnitTest> UnitTests { get; }
+
         Task Save();
 
     }

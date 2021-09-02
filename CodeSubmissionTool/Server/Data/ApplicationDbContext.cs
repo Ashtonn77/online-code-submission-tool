@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CodeSubmissionTool.Server.Configurations.Entities;
 using CodeSubmissionTool.Shared;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,19 +15,22 @@ namespace CodeSubmissionTool.Server.Data
             
         }
 
-
         public DbSet<Test> Tests { get; set; }
 
         public DbSet<Submission> Submissions { get; set; }
 
         public DbSet<Question> Questions { get; set; }
 
+        public DbSet<Challenge> Challenges { get; set; }
+
+        public DbSet<UnitTest> UnitTests { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-
+            //Tests
             modelBuilder.Entity<Test>().HasData(new Test
             {
                 Id = 1,
@@ -34,7 +38,7 @@ namespace CodeSubmissionTool.Server.Data
                 Language = "Python"
             });
 
-
+            //Submissions
             modelBuilder.Entity<Submission>().HasData(new Submission
             {
                 Id = 1,
@@ -42,6 +46,7 @@ namespace CodeSubmissionTool.Server.Data
                 Result = false
             });
 
+            //Questions - deprecated 
             modelBuilder.Entity<Question>().HasData(new Question
             {
                 Id = 1,
@@ -50,6 +55,11 @@ namespace CodeSubmissionTool.Server.Data
             });
 
 
+            //Challenges
+            modelBuilder.ApplyConfiguration(new ChallengeConfiguration());
+
+            //Unit Tests
+            modelBuilder.ApplyConfiguration(new UnitTestConfiguration());
         }
     }
 }

@@ -15,7 +15,8 @@ namespace CodeSubmissionTool.Server.Repositories
         private IGenericRepository<Test> _tests;
         private IGenericRepository<Submission> _submissions;
         private IGenericRepository<Question> _questions;
-
+        private IGenericRepository<Challenge> _challenges;
+        private IGenericRepository<UnitTest> _unitTests;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -28,6 +29,10 @@ namespace CodeSubmissionTool.Server.Repositories
             _submissions ??= new GenericRepository<Submission>(_context);
 
         public IGenericRepository<Question> Questions => _questions ??= new GenericRepository<Question>(_context);
+
+        public IGenericRepository<Challenge> Challenges => _challenges ??= new GenericRepository<Challenge>(_context);
+
+        public IGenericRepository<UnitTest> UnitTests => _unitTests ??= new GenericRepository<UnitTest>(_context);
 
         public void Dispose()
         {
