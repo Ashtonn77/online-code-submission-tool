@@ -105,15 +105,36 @@ using System.Security.Cryptography;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 41 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\Pages\Result.razor"
+#line 65 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\Pages\Result.razor"
        
 
+
     Submission submission;
+    string[] users_;
+    List<TempUser> Users = new List<TempUser>();
+
 
     protected async override Task OnInitializedAsync()
     {
         submission = await HttpClient.GetFromJsonAsync<Submission>("api/submissions/1");
-    }
+        users_ = submission.Output.Split('*');
+
+        for (int i = 0; i < users_.Length - 1; i++)
+        {
+            string[] user = users_[i].Split('#');
+            Users.Add(
+                new TempUser
+                {
+                    First = user[0],
+                    Last = user[1],
+                    Gender = user[2],
+                    Email = user[3]
+                }
+                );
+        }
+
+
+}
 
 
 #line default

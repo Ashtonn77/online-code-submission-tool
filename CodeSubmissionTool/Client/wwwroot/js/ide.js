@@ -6,7 +6,6 @@ var jsCode;
 
 var frame;
 
-
 function start() {
 
     htmlCode = document.getElementById("htmlCode").value;
@@ -54,14 +53,14 @@ function changeLanguage() {
     else if (language == "sql") {
         editor.session.setMode("ace/mode/sql");
     }
+         
 
 }
-
 
 function getCode() {
 
     var code = editor.getSession().getValue();
-
+    
     return code;
 
 }

@@ -98,11 +98,12 @@ using CodeSubmissionTool.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 152 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\Pages\Ide.razor"
+#line 180 "C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\Pages\Ide.razor"
        
 
     Test test = new Test();
-    Question question;
+    Challenge challenge;
+    string el = "test";
 
     private async Task changeLanguage(ChangeEventArgs e)
     {
@@ -124,11 +125,20 @@ using CodeSubmissionTool.Shared;
     private async Task executeCode()
     {
         test.Code = await JsRuntime.InvokeAsync<string>("getCode");
+        await HttpClient.PostAsJsonAsync("api/tests/runsql", test);
+        //await HttpClient.PostAsJsonAsync("api/tests/runpython", test);
 
-        //change hard coded language value
-        test.Language = "Python3.0";
+        if (test.Language == "sql")
+        {
+            await HttpClient.PostAsJsonAsync("api/tests/runsql", test);
+        }
+        else if (test.Language == "python")
+        {
+            await HttpClient.PostAsJsonAsync("api/tests/runpython", test);
+        }
 
-        await HttpClient.PostAsJsonAsync("api/tests", test);
+        //make a roll back transaction
+
         NavigationManager.NavigateTo("/result");
 
     }
@@ -136,9 +146,14 @@ using CodeSubmissionTool.Shared;
 
     protected async override Task OnInitializedAsync()
     {
-        IList<Question> questions = await HttpClient.GetFromJsonAsync<IList<Question>>("api/questions");
-        int idx = new Random().Next(0, questions.Count);
-        question = questions[idx];
+        //IList<Question> questions = await HttpClient.GetFromJsonAsync<IList<Question>>("api/questions");
+        //int idx = new Random().Next(0, questions.Count);
+        //question = questions[idx];
+
+        IList<Challenge> challenges = await HttpClient.GetFromJsonAsync<IList<Challenge>>("api/challenges");
+        int idx = new Random().Next(0, challenges.Count);
+        challenge = challenges[idx];
+
     }
 
 

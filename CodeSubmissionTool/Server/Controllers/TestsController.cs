@@ -96,21 +96,6 @@ namespace CodeSubmissionTool.Server.Controllers
                 await _unitOfWork.Tests.Insert(test);
                 await _unitOfWork.Save();
 
-                _compiler.Python.CreateFile(testDto.Code, fileName);
-                var executionOutput = _compiler.Python.ExecuteScript(fileName, "15");
-
-                bool executionResult = executionOutput.Trim().Equals("12Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz"); 
-
-                Submission submission = new Submission
-                {
-                    Id = 1,
-                    Output = executionOutput,
-                    Result = executionResult
-                };
-
-                _unitOfWork.Submissions.Update(submission);
-                await _unitOfWork.Save();
-
                 return CreatedAtAction("GetTest", new { id = test.Id }, test);
 
             }
@@ -124,7 +109,112 @@ namespace CodeSubmissionTool.Server.Controllers
 
         }
 
-     
+        //just for running scripts
+        // POST api/<TestsController>
+        [HttpPost]
+        [Route("runpython")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> RunPythonTest([FromBody] TestDto testDto)
+        {
+
+            if (!ModelState.IsValid)
+            {
+
+                return BadRequest(ModelState);
+            }
+
+
+            try
+            {
+
+
+                var test = _mapper.Map<Test>(testDto);
+                await _unitOfWork.Save();
+
+                _compiler.Python.CreateFile(testDto.Code, fileName);
+                var executionOutput = _compiler.Python.ExecuteScript(fileName, "thequickbrownfoxjumpsoverthelazydog");
+
+                bool executionResult = executionOutput.Trim().Equals("True");
+
+                Submission submission = new Submission
+                {
+                    Id = 1,
+                    Output = executionOutput,
+                    Result = executionResult
+                };
+
+                _unitOfWork.Submissions.Update(submission);
+                await _unitOfWork.Save();
+
+                return Ok("");
+
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    e.InnerException);
+            }
+
+
+        }
+
+
+        // POST api/<TestsController>
+        [HttpPost]
+        [Route("runsql")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> RunSQLTest([FromBody] TestDto testDto)
+        {
+
+            if (!ModelState.IsValid)
+            {
+
+                return BadRequest(ModelState);
+            }
+
+
+            try
+            {
+
+
+                var test = _mapper.Map<Test>(testDto);
+                await _unitOfWork.Save();
+
+                var executionOutput = _compiler.SQL.ExecuteScript("", test.Code);
+
+
+                Submission submission = new Submission
+                {
+                    Id = 1,
+                    Output = executionOutput,
+                    Result = false
+                };
+
+                _unitOfWork.Submissions.Update(submission);
+                await _unitOfWork.Save();
+
+                return Ok("");
+
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    e.InnerException);
+            }
+
+
+        }
+
+
+
+
+
         // PUT api/<TestsController>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTest(int id, [FromBody] TestDto testDto)

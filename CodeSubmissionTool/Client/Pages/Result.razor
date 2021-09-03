@@ -5,7 +5,7 @@
 
 @if (submission == null)
 {
-<h3 class="mt-5">Loading results ...</h3>
+    <h3 class="mt-5">Loading results ...</h3>
 }
 else
 {
@@ -13,25 +13,49 @@ else
 
 
     <table class="table table-dark mt-5">
-    
+
         <thead>
             <tr>
-                <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+        </tr>
+            @*<tr>
                 <th scope="col">Output</th>
                 <th scope="col">Result</th>
-            </tr>
+            </tr>*@
         </thead>
 
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            @if (submission != null)
-            {
-                <td>@submission.Output</td>
-                <td>@submission.Result</td>
-            }
-        
-        </tr>
+            @*<tr>
+                <th scope="row">1</th>
+                @if (submission != null)
+                {
+                    <td>@submission.Output</td>
+                    <td>@submission.Result</td>
+                }
+
+            </tr>*@
+
+            @if (Users != null)
+                {
+                    @foreach (var el in Users)
+                    {
+
+                        <tr>
+
+                            <td>@el.First</td>
+                            <td>@el.Last</td>
+                            <td>@el.Gender</td>
+                            <td>@el.Email</td>
+
+                        </tr>
+                    }
+                }
+
+
+
         </tbody>
 
     </table>
@@ -40,11 +64,32 @@ else
 
 @code {
 
+
     Submission submission;
+    string[] users_;
+    List<TempUser> Users = new List<TempUser>();
+
 
     protected async override Task OnInitializedAsync()
     {
         submission = await HttpClient.GetFromJsonAsync<Submission>("api/submissions/1");
-    }
+        users_ = submission.Output.Split('*');
+
+        for (int i = 0; i < users_.Length - 1; i++)
+        {
+            string[] user = users_[i].Split('#');
+            Users.Add(
+                new TempUser
+                {
+                    First = user[0],
+                    Last = user[1],
+                    Gender = user[2],
+                    Email = user[3]
+                }
+                );
+        }
+
+
+}
 
 }

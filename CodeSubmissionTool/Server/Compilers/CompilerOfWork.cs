@@ -9,6 +9,8 @@ namespace CodeSubmissionTool.Server.Compilers
     public class CompilerOfWork : ICompilerOfWork
     {
         private ICompiler _python;
+        private ICompiler _sql;
         public ICompiler Python => _python ??= new PythonCompiler();
+        public ICompiler SQL => _sql ??= new SQLCompiler();
     }
 }

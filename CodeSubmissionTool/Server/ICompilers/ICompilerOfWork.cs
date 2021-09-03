@@ -8,5 +8,8 @@ namespace CodeSubmissionTool.Server.ICompilers
     public interface ICompilerOfWork
     {
         ICompiler Python { get; }
+
+        ICompiler SQL { get; }
+
     }
 }

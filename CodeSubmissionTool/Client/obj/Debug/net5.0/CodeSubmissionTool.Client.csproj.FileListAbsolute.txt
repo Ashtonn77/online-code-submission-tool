@@ -1167,6 +1167,7 @@ C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSu
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\CodeSubmissionTool.Client.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\CodeSubmissionTool.Client.RazorComponent.input.cache
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
+C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\RazorDeclaration\Pages\FrontEndIde.razor.g.cs
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Ide.razor.g.cs
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Result.razor.g.cs
@@ -1180,6 +1181,7 @@ C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSu
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\CodeSubmissionTool.Client.TagHelpers.output.cache
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\CodeSubmissionTool.Client.RazorCoreGenerate.cache
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\Razor\App.razor.g.cs
+C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\Razor\Pages\FrontEndIde.razor.g.cs
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\Razor\Pages\Ide.razor.g.cs
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\Razor\Pages\Result.razor.g.cs
@@ -1418,5 +1420,3 @@ C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSu
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\CodeSubmissionTool.Client.dll
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\ref\CodeSubmissionTool.Client.dll
 C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\CodeSubmissionTool.Client.pdb
-C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\RazorDeclaration\Pages\FrontEndIde.razor.g.cs
-C:\Users\Ashton\OneDrive - Nebula\course-work\online-code-submission-tool\CodeSubmissionTool\Client\obj\Debug\net5.0\Razor\Pages\FrontEndIde.razor.g.cs
